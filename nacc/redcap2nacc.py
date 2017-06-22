@@ -36,8 +36,8 @@ def check_blanks(packet):
                 r = blanks.convert_rule_to_python(field.name, rule)
                 if r(packet):
                     warnings.append(
-                        "'%s' is '%s' with length '%s', but should be blank: '%s'." %
-                        (field.name, field.value, len(field.value), rule))
+                        "'%s' is '%s' with length '%s', but should be blank: '%s'. Test form: '%s'" %
+                        (field.name, field.value, len(field.value), rule, form.form_name))
 
     return warnings
 
@@ -142,8 +142,11 @@ def main():
     """
     Reads a REDCap exported CSV, data file, then prints it out in NACC's format
     """
-    parser = argparse.ArgumentParser(description='Process redcap form output to nacculator.')
-
+    if __name__ == '__main__':
+        parser = argparse.ArgumentParser(description='Process redcap form output to nacculator.')
+    else:
+        parser = raw_csv
+    
     filters_names = { 'cleanPtid' : 'clean_ptid',
                 'replaceDrugId' : 'replace_drug_id',
                 'fixC1S' : 'fix_c1s',
@@ -160,9 +163,13 @@ def main():
     parser.add_argument('-meta', action='store', dest='filter_meta', help='Input file for the filter metadata (in case -filter is used)')
 
     options = parser.parse_args()
+    
+    #options = None
 
     # Defaults to processing of ivp.
     # TODO this can be changed in future to process fvp by default.
+    #if(options == None):
+	#    print "Hello Flask."
     if not (options.ivp or options.fvp or options.np or options.filter):
         options.ivp = True
 
@@ -178,6 +185,7 @@ def main():
         reader = csv.DictReader(fp)
         for record in reader:    
             print >> sys.stderr, "[START] ptid : " + str(record['ptid'])
+            print >> sys.stderr, "[Date(M-D-Y)][Visit #]: ["+ str(record['visitmo']) + "-" + str(record['visitday']) + "-" + str(record['visityr']) + "][" + str(record['visitnum']) + "]"
             try:
                 if options.ivp:
                     packet = ivp_builder.build_uds3_ivp_form(record)    
