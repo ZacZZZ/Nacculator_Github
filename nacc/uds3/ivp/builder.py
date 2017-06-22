@@ -561,8 +561,8 @@ def build_uds3_ivp_form(record):
     b8.MYOCLRT = record['myoclrt']
     b8.ALSFIND = record['alsfind']
     b8.GAITNPH = record['gaitnph']
-    b8.OTHNEUR = record['otherneur']
-    b8.OTHNEURX = record['otherneurx']
+    b8.OTHNEUR = record['othneur']
+    b8.OTHNEURX = record['othneurx']
     packet.append(b8)
 
     b9 = ivp_forms.FormB9()
@@ -626,23 +626,23 @@ def build_uds3_ivp_form(record):
     packet.append(b9)
 
     # Among C1S and C2 forms, one must be filled, one must be empty.
-    isC1SNotBlank = '0' + (record['c1s_1a_mmseloc'] and record['c1s_1a_mmseloc'].strip()) \
-                or (record['c1s_11a_cogstat'] and record['c1s_11a_cogstat'].strip())
-    isC2NotBlank = '0' + (record['mocacomp'] and record['mocacomp'].strip()) \
-                or (record['cogstat_c2'] and record['cogstat_c2'].strip())
+    # isC1SNotBlank = '0' + (record['c1s_1a_mmseloc'] and record['c1s_1a_mmseloc'].strip()) \
+                # or (record['c1s_11a_cogstat'] and record['c1s_11a_cogstat'].strip())
+    # isC2NotBlank = '0' + (record['mocacomp'] and record['mocacomp'].strip()) \
+                # or (record['cogstat_c2'] and record['cogstat_c2'].strip())
 
-    condition = int(isC1SNotBlank) + int(isC2NotBlank)
+    # condition = int(isC1SNotBlank) + int(isC2NotBlank)
 
-    if(condition != 1):
-        ptid = record['ptid']
-        message = "Could not parse packet as " + ("both" if condition > 1 else "neither") + " c1s/c2 forms has data";
-        message = message + " for PTID : " + ("unknown" if not ptid else ptid)
-        raise Exception(message)
+    # if(condition != 1):
+        # ptid = record['ptid']
+        # message = "Could not parse packet as " + ("both" if condition > 1 else "neither") + " c1s/c2 forms has data";
+        # message = message + " for PTID : " + ("unknown" if not ptid else ptid)
+        # raise Exception(message)
 
-    if(int(isC1SNotBlank)):
-        addC1S(record, packet)
-    else:
-        addC2(record, packet)
+    # if(int(isC1SNotBlank)):
+        # addC1S(record, packet)
+    # else:
+        # addC2(record, packet)
 
     d1 = ivp_forms.FormD1()
     d1.DXMETHOD = record['dxmethod']
