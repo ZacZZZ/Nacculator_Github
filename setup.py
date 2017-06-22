@@ -8,6 +8,7 @@ from setuptools import setup, find_packages
 
 VERSION="0.2.4"
 
+
 setup(
     name="nacculator",
     version=VERSION,
@@ -23,7 +24,6 @@ setup(
 
     package_dir = {'nacc': 'nacc'},
     packages = find_packages(),
-
     entry_points={
         "console_scripts": [
             "redcap2nacc = nacc.redcap2nacc:main"
