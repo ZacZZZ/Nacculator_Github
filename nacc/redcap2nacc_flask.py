@@ -146,7 +146,7 @@ def main(raw_csv):
     parser = argparse.ArgumentParser(description='Process redcap form output to nacculator.')
     # else:
         # parser = raw_csv
-    
+
     filters_names = { 'cleanPtid' : 'clean_ptid',
                 'replaceDrugId' : 'replace_drug_id',
                 'fixC1S' : 'fix_c1s',
@@ -163,7 +163,7 @@ def main(raw_csv):
     parser.add_argument('-meta', action='store', dest='filter_meta', help='Input file for the filter metadata (in case -filter is used)')
 
     options = parser.parse_args()
-    
+
     #options = None
 
     # Defaults to processing of ivp.
@@ -180,7 +180,7 @@ def main(raw_csv):
 
     # Place holder for future. May need to output to a specific file in future.
     output = sys.stdout
-    
+
     all_warnings = []
 
     if options.filter:
@@ -188,12 +188,12 @@ def main(raw_csv):
         filter_method(fp, options.filter_meta, output)
     else:
         reader = csv.DictReader(fp)
-        for record in reader:    
+        for record in reader:
             # print >> sys.stderr, "[START] ptid : " + str(record['ptid'])
             # print >> sys.stderr, "[Date(M-D-Y)][Visit #]: ["+ str(record['visitmo']) + "-" + str(record['visitday']) + "-" + str(record['visityr']) + "][" + str(record['visitnum']) + "]"
             try:
                 if options.ivp:
-                    packet = ivp_builder.build_uds3_ivp_form(record)    
+                    packet = ivp_builder.build_uds3_ivp_form(record)
                 elif options.np:
                     packet = np_builder.build_uds3_np_form(record)
                 elif options.fvp:
@@ -217,17 +217,17 @@ def main(raw_csv):
 
             if warnings:
                 print >> sys.stderr, "\n".join(warnings)
-            
+
             # fcsv = open('NaccConverted_' + raw_csv, 'wt')
             # writer = csv.writer(fcsv)
             # print('This is the name of the output file 3381: ' + 'NaccConverted_' + raw_csv)
             all_warnings.append([warnings])
             sys.stdout = open('NaccConverted_' + raw_csv[:-4] + '.txt', 'w')
-            
+
             for form in packet:
                 print form
-    
-    # all_warnings = "\n".join(all_warnings) 
+
+    # all_warnings = "\n".join(all_warnings)
     return all_warnings
 
 if __name__ == '__main__':

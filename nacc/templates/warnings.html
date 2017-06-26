@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Warnings when converting redcap to NACC format</title>
+  </head>
+  <body>
+    <p>Here are all the warnings we have collected:</p>
+    <ul>
+      {% for warning in warnings %}
+      <li>{{ warning \n}}</li>
+      {% endfor %}
+    </ul>
+    <p>Please review!</p>
+  </body>
+</html>
