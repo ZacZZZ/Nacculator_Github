@@ -221,7 +221,11 @@ def main(raw_csv):
             # fcsv = open('NaccConverted_' + raw_csv, 'wt')
             # writer = csv.writer(fcsv)
             # print('This is the name of the output file 3381: ' + 'NaccConverted_' + raw_csv)
-            all_warnings.append([warnings])
+
+            # all_warnings.append([warnings])
+            all_warnings += warnings
+
+            # print('This is in redcap2nacc, file name ' + raw_csv)
             sys.stdout = open('NaccConverted_' + raw_csv[:-4] + '.txt', 'w')
 
             for form in packet:
