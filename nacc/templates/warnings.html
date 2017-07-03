@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload Succeed</title>
+  </head>
+  <body>
+    <p>Upload succeeded. Please see warnings below.<br/>The converted file: NaccConverted_{{ filename }}.txt in the directory where the flask code is.</p>
+    <ul>
+      {% for warning in warnings %}
+      <p>{{ warning }} break <br/></p>
+      <!-- <li>{{ warning }}<br/></li> -->
+      {% endfor %}
+    </ul>
+    <p>Please review!</p>
+  </body>
+</html>

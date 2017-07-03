@@ -1,26 +1,33 @@
+# The basic structure is from http://opentechschool.github.io/python-flask/core/setup.html
 import redcap2nacc_flask
 import argparse
 import os
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, Response
 
-#which one?
+# To operate the uploaded file
 from werkzeug.utils import secure_filename
 from werkzeug import secure_filename
 
-UPLOAD_FOLDER = '/path/to/the/uploads'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+# UPLOAD_FOLDER = '/path/to/the/uploads'
+# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
- 
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 app = Flask(__name__)
 email_addresses = []
 redcapWarnings = []
+
+
+@app.route('/large.csv')
+def generate_large_csv():
+    def generate():
+        for row in iter_all_rows():
+            yield ','.join(row) + '\n'
+    return Response(generate(), mimetype='text/csv')
 
 @app.route('/')
 def hello_world():
@@ -37,15 +44,19 @@ def upload_file():
    if request.method == 'POST':
       f = request.files['file']
       f.save(secure_filename(f.filename))
-      # print(f)
-      # print(secure_filename(f.filename))
+      print('This is f:')
+      print(f)
+      print('This is secure_filename')
+      print(secure_filename(f.filename))
       # cwd = os.getcwd() # working directory is where the python code is
       # print(cwd)
       # redcap2nacc.main(f.filename)
       # redcapWarnings = redcap2nacc_flask.main(f.filename)
       # print (redcap2nacc_flask.main(f.filename))
-      redcapWarnings.append(redcap2nacc_flask.main(f.filename))
-      return 'file uploaded successfully, Nacc form converted. Please check /warnings.html for conversion warnings.'+ "\n" + 'Find the converted file: ' + 'NaccConverted_' + f.filename[:-4] + '.txt'
+      redcapWarnings = redcap2nacc_flask.main(f.filename)
+      # 'file uploaded successfully, Nacc form converted. Please check /warnings.html for conversion warnings.'+ "\n" + 'Find the converted file: ' + 'NaccConverted_' + f.filename[:-4] + '.txt'
+    #   return redirect('/warnings.html')
+      return render_template('warnings.html', warnings=redcapWarnings, filename=f.filename[:-4])
 
 @app.route('/signup', methods = ['POST'])
 def signup():
@@ -57,7 +68,9 @@ def signup():
 
 @app.route('/warnings.html')
 def warning():
-    return render_template('warnings.html', warnings=redcapWarnings)
+
+    return render_template('warnings.html', warnings=redcapWarnings, filename=f.filename[:-4])
+
 
 @app.route('/emails.html')
 def emails():
