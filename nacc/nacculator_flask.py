@@ -1,7 +1,9 @@
 # The basic structure is from http://opentechschool.github.io/python-flask/core/setup.html
+
 import redcap2nacc_flask
 import argparse
 import os
+
 
 from flask import Flask, render_template, request, redirect, url_for, Response
 
@@ -16,10 +18,10 @@ app = Flask(__name__)
 # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
+
 app = Flask(__name__)
 email_addresses = []
 redcapWarnings = []
-
 
 @app.route('/large.csv')
 def generate_large_csv():
@@ -43,10 +45,8 @@ def upload_file():
    if request.method == 'POST':
       f = request.files['file']
       f.save(secure_filename(f.filename))
-      print('This is f:')
-      print(f)
-      print('This is secure_filename')
-      print(secure_filename(f.filename))
+      # print(f)
+      # print(secure_filename(f.filename))
       # cwd = os.getcwd() # working directory is where the python code is
       # print(cwd)
       # redcap2nacc.main(f.filename)
@@ -56,6 +56,7 @@ def upload_file():
       # 'file uploaded successfully, Nacc form converted. Please check /warnings.html for conversion warnings.'+ "\n" + 'Find the converted file: ' + 'NaccConverted_' + f.filename[:-4] + '.txt'
     #   return redirect('/warnings.html')
       return render_template('warnings.html', warnings=redcapWarnings, filename=f.filename[:-4])
+
 
 @app.route('/signup', methods = ['POST'])
 def signup():
@@ -68,6 +69,7 @@ def signup():
 @app.route('/warnings.html')
 def warning():
     return render_template('warnings.html', warnings=redcapWarnings, filename=f.filename[:-4])
+
 
 @app.route('/emails.html')
 def emails():
