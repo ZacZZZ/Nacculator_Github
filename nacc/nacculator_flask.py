@@ -1,27 +1,32 @@
+# The basic structure is from http://opentechschool.github.io/python-flask/core/setup.html
 import redcap2nacc_flask
 import argparse
 import os
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, Response
 
-#which one?
+# To operate the uploaded file
 from werkzeug.utils import secure_filename
 from werkzeug import secure_filename
 
-UPLOAD_FOLDER = '/path/to/the/uploads'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+# UPLOAD_FOLDER = '/path/to/the/uploads'
+# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 app = Flask(__name__)
 email_addresses = []
 redcapWarnings = []
 
+
+@app.route('/large.csv')
+def generate_large_csv():
+    def generate():
+        for row in iter_all_rows():
+            yield ','.join(row) + '\n'
+    return Response(generate(), mimetype='text/csv')
 
 @app.route('/')
 def hello_world():
