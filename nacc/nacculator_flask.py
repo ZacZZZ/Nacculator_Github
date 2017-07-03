@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-
+ 
 
 
 app = Flask(__name__)
@@ -27,10 +27,10 @@ def hello_world():
     author = "Zac"
     name = "Sean and Zac"
     return render_template('index.html', author=author, name=name)
-    
+
 # @app.route('/upload')
 # def upload_file():
-   # return render_template('upload.html')    
+   # return render_template('upload.html')
 
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
@@ -51,21 +51,21 @@ def upload_file():
 def signup():
     email = request.form['email']
     email_addresses.append(email)
-    print(email_addresses) 
+    print(email_addresses)
     print("The email address is '" + email + "'")
     return redirect('/')
 
 @app.route('/warnings.html')
 def warning():
     return render_template('warnings.html', warnings=redcapWarnings)
-	
+
 @app.route('/emails.html')
 def emails():
     return render_template('emails.html', email_addresses=email_addresses)
-	
+
 if __name__ == '__main__':
     #Call nacculator and process data uploaded from user
-    
+
 		# raw_csv = argparse.ArgumentParser(description='Process redcap form output to nacculator.')
-    
+
     app.run()
