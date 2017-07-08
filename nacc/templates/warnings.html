@@ -11,6 +11,8 @@
       <!-- <li>{{ warning }}<br/></li> -->
       {% endfor %}
     </ul>
+    <a href="{{ url_for('download', filename=downloadname) }}" target="_blank">Download</a>
+    <!-- <a href="/{{downloadname}}" download> </a>-->
     <p>Please review!</p>
   </body>
 </html>
