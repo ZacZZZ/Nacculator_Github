@@ -37,27 +37,17 @@
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
-              <a class="nav-link active" href="#">  <span class="sr-only">(current)</span></a>
-            <!-- </li> -->
-            <!-- <li class="nav-item"> -->
-              <!-- <a class="nav-link" href="#">About</a> -->
-            <!-- </li> -->
-            <!-- <li class="nav-item"> -->
-              <!-- <a class="nav-link" href="#">Contact</a> -->
-            <!-- </li> -->
+              <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
           </ul>
         </nav>
-        <h3 class="text-muted">Nacculator: Redcap to Nacc</h3>
-      </div>
-      
-
-    
-    
-
-      <div class="jumbotron">
-        <h1 class="display-3">Hello! </h1>
-        <p class="lead">Please upload your redcap file below.</p>
-        <!-- <p><a class="btn btn-lg btn-success" href="#" role="button">Coming soon</a></p> -->
+        <h3 class="text-muted">Project name</h3>
       </div>
       
       <form action = "http://localhost:5000/uploader" method = "POST" enctype = "multipart/form-data">
@@ -65,23 +55,55 @@
         <input type = "submit"/>
       </form>
       
+      <form class="form-inline">
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd">
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    
+    
+
+      <div class="jumbotron">
+        <h1 class="display-3">Jumbotron heading</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+      </div>
+
       <div class="row marketing">
         <div class="col-lg-6">
-          <h4>[Tips] For later</h4>
-          <p>Tips 1</p>
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-          
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
 
         <div class="col-lg-6">
-          <h4>[Appendix] For later</h4>
-          <p>Appendix 1</p>
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
       </div>
 
       <footer class="footer">
-        <p>&copy; Nacculator 2017</p>
+        <p>&copy; Company 2017</p>
       </footer>
 
     </div> <!-- /container -->

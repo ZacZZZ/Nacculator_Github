@@ -1,13 +1,12 @@
 # The basic structure is from http://opentechschool.github.io/python-flask/core/setup.html
-
 import redcap2nacc_flask
 import argparse
 import os
-
-
 from flask import Flask, render_template, request, redirect, url_for, \
 send_from_directory #, Response
 
+# Referrence https://n8henrie.com/2015/05/better-bootstrap-file-upload-button/
+#from forms import UploadForm
 # To operate the uploaded file
 from werkzeug.utils import secure_filename
 from werkzeug import secure_filename
@@ -50,7 +49,7 @@ def upload_file():
             return redirect(request.url)
       if file:
           somefilename = secure_filename(file.filename)
-        #   file.save(secure_filename(file.filename))
+          file.save(secure_filename(file.filename))
           file.save(os.path.join(app.config['UPLOAD_FOLDER'], somefilename))
       redcapWarnings = redcap2nacc_flask.main(file.filename)
       # 'file uploaded successfully, Nacc form converted. Please check /warnings.html for conversion warnings.'+ "\n" + 'Find the converted file: ' + 'NaccConverted_' + file.filename[:-4] + '.txt'
