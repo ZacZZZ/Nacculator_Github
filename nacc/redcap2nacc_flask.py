@@ -11,6 +11,7 @@ import re
 import sys
 import argparse
 import traceback
+import codecs
 
 from nacc.uds3 import blanks
 from nacc.uds3.ivp import builder as ivp_builder

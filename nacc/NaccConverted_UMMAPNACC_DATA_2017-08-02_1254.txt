@@ -1,0 +1,35 @@
+I  Z1  3   20            4  19 2017 1   SRS 1                                                                 1                                                                 1                                                                 1                                                                 1                                                                 1                                                                 1                                                                
+I  A1  3   20            4  19 2017 1   SRS 4 8   2 2 1 3  1956 2 0                                                                 2                                                               88                                                              88                                                              1                                                              12 3 1 1 1 480 1
+I  A2  3   20            4  19 2017 1   SRS 4  1953 2 0                                                                 2                                                               3                                                               88                                                              12 5 11  0 5 3 0
+I  A3  3   20            4  19 2017 1   SRS 0 0                                                                                                                             0                                                                                                                             0                                                                                                                             4  1931 83  8           3  1935 999 8           2  9  1957 999 8           8  1960     8                                                                                                                                                                                                                                                                                                                                                                                                                                                           1  1  1975 17  8                                                                                                                                                                                                                                                                                                                                                          
+I  A4G 3   20            4  19 2017 1   SRS 1
+I  A4D 3   20            4  19 2017 1   SRS 100689
+I  A4D 3   20            4  19 2017 1   SRS 103137
+I  A4D 3   20            4  19 2017 1   SRS d03050
+I  A4D 3   20            4  19 2017 1   SRS d00963
+I  A4D 3   20            4  19 2017 1   SRS d00425
+I  A5  3   20            4  19 2017 1   SRS 0 0          1 1 0        0 0 0 0 0 0 0 0                                                              0        0        0      0      0 0            0   1 0 0 0 1 2                                                                1     0 0 0 0 0 0                                                              0 0                                                              0 0 0 0 0 0 0 0 0                                                             
+I  B1  3   20            4  19 2017 1   SRS 67.5 211 160 100 68  0 1 1 1 0  
+I  B4  3   20            4  19 2017 1   SRS 0   0   0   0   0   0   0    0   0   0  
+I  B5  3.1 20            4  19 2017 1   SRS 3 Friend                                                       0   0   0   0   0   0   0   0   0   0   0   0  
+I  B6  3   20            4  19 2017 1   SRS   1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 3 
+I  B7  3   20            4  19 2017 1   SRS 0 0 0 0 0 0 0 0 0 0
+I  B8  3   20            4  19 2017 1   SRS 0                                                                                                                                               
+I  B9  3   20            4  19 2017 1   SRS 0 0 0                                                                                                                                                                                                                      0                                                                                                                                                                                                                                    0                                                                                            8 8 0 0
+I  D1  3   20            4  19 2017 1   SRS 2 0 0               0 0         0         0         1 8 8 8 8 8 8 8 8 8 8                                                                8 8 8 8 8 8 9 9 9                                                              0   0     0   0   0   0   0                                                                  0             0   0   0   0   0     0   0   0     0   0                                                                0     0   0   0   0   0   0                                                                0     0   0   0   0                                                                0                                                                0                                                               
+I  D2  3   20            4  19 2017 1   SRS 0                                                              0 0 0 0 1 0 0 0 0 1 2                                                              0 1 0 0 0 0 0 0 0 0                                                              0 0 0 0 0                                                              0                                                             
+xt
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
+Print plain text
