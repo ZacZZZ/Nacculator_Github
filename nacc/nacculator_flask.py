@@ -102,4 +102,4 @@ def shutdown():
 if __name__ == '__main__':
     #Call nacculator and process data uploaded from user
     # raw_csv = argparse.ArgumentParser(description='Process redcap form output to nacculator.')
-    app.run()
+    app.run(host='0.0.0.0')
