@@ -37,8 +37,10 @@ def check_blanks(packet):
                 r = blanks.convert_rule_to_python(field.name, rule)
                 if r(packet):
                     warnings.append(
-                        "'%s' is '%s' with length '%s', but should be blank: '%s'. Test form: '%s'" %
-                        (field.name, field.value, len(field.value), rule, form.form_name))
+                        "'%s' is '%s' with length '%s', but should be blank: '%s'." %
+                        (field.name, field.value, len(field.value), rule))
+                        # "'%s' is '%s' with length '%s', but should be blank: '%s'. Test form: '%s'" %
+                        # (field.name, field.value, len(field.value), rule, form.form_name))
 
     return warnings
 
@@ -180,9 +182,11 @@ def main(raw_csv):
         fp = open(raw_csv, 'r')
 
     # Place holder for future. May need to output to a specific file in future.
-    output = sys.stdout
+    # output = sys.stdout
 
     all_warnings = []
+    
+    sys.stdout = open('NaccConverted_' + raw_csv[:-4] + '.txt', 'w')
 
     if options.filter:
         filter_method = getattr(filters, 'filter_' + filters_names[options.filter])
@@ -227,7 +231,6 @@ def main(raw_csv):
             all_warnings += warnings
 
             # print('This is in redcap2nacc, file name ' + raw_csv)
-            sys.stdout = open('NaccConverted_' + raw_csv[:-4] + '.txt', 'w')
 
             for form in packet:
                 print form
