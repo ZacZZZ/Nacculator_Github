@@ -4,10 +4,11 @@
     <title>Upload Succeed</title>
   </head>
   <body>
-    <p>Upload succeeded. Please see warnings below.<br/>The converted file: NaccConverted_{{ filename }}.txt in the directory where the flask code is.</p>
+    <p>Please review data error or warnings below before upload to nacc!</p>
+    <!-- <p>Upload succeeded. Please see warnings below.<br/>The converted file: NaccConverted_{{ filename }}.txt in the directory where the flask code is.</p> -->
     <ul>
       {% for warning in warnings %}
-      <p>{{ warning }} break <br/></p>
+      <p>{{ warning }} <br/></p>
       <!-- <li>{{ warning }}<br/></li> -->
       {% endfor %}
     </ul>
