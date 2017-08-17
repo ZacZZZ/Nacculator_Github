@@ -152,8 +152,11 @@ class FieldBag(object):
             start, end = field.position
             start -= 1
             end -= 1
-            assert len(value) == end-start+1, \
-                "Length of field {} with value {} is not valid. {} != {}".format(field.name, value, len(value), end-start+1)
+            # Ad-hoc fix: force the length to be valid, but must notify users to correct the data error - Zac.Z 8/17/2017
+            if len(value) != end-start+1:
+                value = value[:(end-start+1)]
+            # assert len(value) == end-start+1, \
+                # "Length of field {} with value {} is not valid. {} != {}".format(field.name, value, len(value), end-start+1)
             buf[start:start+len(value)] = value
 
         assert len(buf) == orig_buf_size, field.name + ": buffer changed size!"

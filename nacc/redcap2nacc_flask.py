@@ -30,9 +30,20 @@ def check_blanks(packet):
         # Find all fields that:
         #   1) have blanking rules; and
         #   2) aren't blank.
+        
+        for field in form.fields.itervalues():
+            # Ad-hoc warning from __init__.py in nacc\uds3 statement "len(value) != end-start+1:"
+            value = field.value
+            start, end = field.position
+            start -= 1
+            end -= 1
+            if len(value) != end-start+1:
+                warnings.append("Data error [Must Fix!!]: Length of field {} with value {} is not valid. {} != {}".format(field.name, value, len(value), end-start+1))
+                
         for field in [f for f in form.fields.itervalues()
                       if f.blanks and not empty(f)]:
 
+            
             for rule in field.blanks:
                 r = blanks.convert_rule_to_python(field.name, rule)
                 if r(packet):
@@ -41,6 +52,8 @@ def check_blanks(packet):
                         (field.name, field.value, len(field.value), rule))
                         # "'%s' is '%s' with length '%s', but should be blank: '%s'. Test form: '%s'" %
                         # (field.name, field.value, len(field.value), rule, form.form_name))
+                
+                
 
     return warnings
 
