@@ -39,6 +39,10 @@ def check_blanks(packet):
             end -= 1
             if len(value) != end-start+1:
                 warnings.append("Data error [Must Fix!!]: Length of field {} with value {} is not valid. {} != {}".format(field.name, value, len(value), end-start+1))
+            
+            ## This part is to see which forms have been processed, but the output.txt has that too
+            #for rule in field.blanks:
+            #    print("form processed: '%s' " % (form.form_name))
                 
         for field in [f for f in form.fields.itervalues()
                       if f.blanks and not empty(f)]:
